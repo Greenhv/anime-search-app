@@ -1,0 +1,9 @@
+version: '2'
+services:
+  workspace:
+    command: "npm run start"
+    build: .
+    volumes:
+      - .:/home/node/app
+    ports:
+      - "4000:3000"
