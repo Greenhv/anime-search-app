@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 import { createEpicMiddleware } from 'redux-observable';
 import { createLogger } from 'redux-logger';
 import { Iterable } from 'immutable';
-import reducer from '../modules';
+import { rootReducer, rootEpic } from '../modules';
 
 const logger = createLogger({
   stateTransformer: (state) => {
@@ -16,6 +16,8 @@ const logger = createLogger({
   }
 })
 
-const makeStore = () => createStore(reducer, applyMiddleware(logger));
+const epicMiddleware = createEpicMiddleware(rootEpic);
+
+const makeStore = () => createStore(rootReducer, applyMiddleware(epicMiddleware, logger));
 
 export default makeStore;

@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
-import animes from './animes';
+import { combineEpics } from 'redux-observable';
+import search, { searchEpic } from './search';
 
-const reducers = combineReducers({
-  animes,
+export const rootEpic = combineEpics(
+  searchEpic,
+);
+
+export const rootReducer = combineReducers({
+  search,
 });
-
-export default reducers;
