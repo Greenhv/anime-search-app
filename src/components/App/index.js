@@ -1,19 +1,30 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Provider } from 'react-redux';
+import { 
+  BrowserRouter as Router,
+  Route,
+} from 'react-router-dom';
+import Home from '../Home';
+import Detail from '../Detail';
 import './styles/index.css';
+import 'bulma/css/bulma.css'
 
-class App extends PureComponent {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+const App = ({ store }) => (
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/anime/:animeSlug" component={Detail} />
       </div>
-    );
-  }
+    </Router>
+  </Provider>
+)
+
+App.displayName = 'App';
+
+App.propTypes = {
+  store: PropTypes.object.isRequired,
 }
 
 export default App;

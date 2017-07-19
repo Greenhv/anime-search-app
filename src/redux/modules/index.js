@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import elements from './elements';
+import animes from './animes';
 
 const reducers = combineReducers({
-  elements,
+  animes,
 });
 
 export default reducers;
