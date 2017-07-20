@@ -91,7 +91,7 @@ export const searchEpic = (action$, store) => {
     .mergeMap((payload) =>
       ajax(`${API_URI}/anime?filter[text]=${payload.text}`)
       .map(resp => searchCompleted(resp.response))
-      .catch(error => console.log(error))
+      .catch(error => searchError(error.message))
     )
 }
 

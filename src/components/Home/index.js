@@ -26,10 +26,12 @@ class Home extends PureComponent {
         <div>
           <label className="label">Name</label>
           <div className="control">
-            <Input type="text" placeholder="Search..." onKeyUp={(e) => { search(e.target.value) }} />
+            <Input type="text" placeholder="Search..." onChange={(e) => { search(e.target.value) }} />
           </div>
         </div>
-        <List items={animes} />
+        <div>
+          { animes.size > 0 ? <List items={animes} /> : 'Results not found' }
+        </div>
         <Link to='/anime/humo'>Humo</Link>
       </div>
     );
