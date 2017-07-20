@@ -41,7 +41,7 @@ export const isSearching = (text = '') => ({
 })
 
 export const searchCompleted = (response) => {
-  let values = List();
+  let values = [];
 
   response.data.forEach((value) => {
     const {
@@ -66,6 +66,8 @@ export const searchCompleted = (response) => {
       posterImage: posterImage.small,
     }));
   });
+
+  values = List(values);
 
   return {
     type: SEARCH_COMPLETED,
